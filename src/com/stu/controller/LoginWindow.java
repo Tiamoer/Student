@@ -42,10 +42,18 @@ public class LoginWindow extends Application {
             alert.setHeaderText(null);
             if (stuService.checkLogin(accountTextField.getText(),passTextField.getText())) {
                 alert.setContentText("登陆成功！");
+                alert.showAndWait();
+                //关闭当前界面.打开主页面
+                try {
+                    new MainWindows().start(new Stage());
+                    stage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } else {
                 alert.setContentText("登陆失败！");
+                alert.showAndWait();
             }
-            alert.showAndWait();
         });
 
         Scene scene = new Scene(grid,300,275);
