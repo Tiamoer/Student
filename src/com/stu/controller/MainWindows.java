@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.PropertyPermission;
 
 /**
  * 主窗口
