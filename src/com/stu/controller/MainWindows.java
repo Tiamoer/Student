@@ -20,8 +20,8 @@ import java.util.PropertyPermission;
 public class MainWindows extends Application {
 
     Stage stage;
-    StuDao stuDao = new StuDao();;
     BorderPane borderPane;
+    StuDao stuDao = new StuDao();;
 
     //学生管理菜单菜单
     private Menu stuMenu() {
@@ -113,6 +113,8 @@ public class MainWindows extends Application {
 
     private void showStuDelete() {
         //显示删除学生的面板
+        StuModel student;
+
     }
 
     private void showStuUpdata() {
