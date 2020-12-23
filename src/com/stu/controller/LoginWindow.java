@@ -40,7 +40,8 @@ public class LoginWindow extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("信息提示");
             alert.setHeaderText(null);
-            if (stuService.checkLogin(accountTextField.getText(),passTextField.getText())) {
+            int loginIndex = stuService.checkLogin(accountTextField.getText(),passTextField.getText());
+            if (loginIndex==1) {
                 alert.setContentText("登陆成功！");
                 alert.showAndWait();
                 //关闭当前界面.打开主页面
@@ -50,7 +51,12 @@ public class LoginWindow extends Application {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if(loginIndex==2) {
+                alert.setAlertType(Alert.AlertType.ERROR);
+                alert.setContentText("账户被冻结！请联系管理员解除冻结！");
+                alert.showAndWait();
             } else {
+                alert.setAlertType(Alert.AlertType.INFORMATION);
                 alert.setContentText("登陆失败！");
                 alert.showAndWait();
             }
