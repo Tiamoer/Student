@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 /**
  * 学生表数据层，里面的所有方法都是用来操作数据库的
+ *
+ * 这是一个kc_t的测试
  */
 public class StuDao {
 
