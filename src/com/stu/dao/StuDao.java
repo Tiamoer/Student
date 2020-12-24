@@ -116,6 +116,8 @@ public class StuDao {
         return null;
     }
 
+    //测试
+
     //根据账户名来删除学生
     public boolean deleteStu(String account) {
         try {
@@ -135,27 +137,6 @@ public class StuDao {
         }
         return false;
     }
-
-    //更新学生信息
-    /*public boolean updataStu(String account,String field,Object value) {
-        try {
-            preparedStatement = connection.prepareStatement("update stu set "+field+"=? where stu_account = ?");
-            if (field.equals("no")||field.equals("age")||field.equals("stu_status"))
-                preparedStatement.setInt(1,(Integer) value);
-            else preparedStatement.setString(1,(String) value);
-            preparedStatement.setString(2,account);
-            preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            try {
-                if (preparedStatement!=null)
-                    preparedStatement.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return false;*/
 
     //更新学生信息
     public boolean updateStu(StuModel students) {
