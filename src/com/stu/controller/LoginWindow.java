@@ -5,15 +5,18 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+import javafx.stage.StageStyle;
 
 public class LoginWindow extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("学生信息管理系统");
+        stage.getIcons().add(new Image("com/stu/img/logo.png"));
         stage.setWidth(500);
         stage.setHeight(300);
         stage.setResizable(false);
@@ -50,9 +53,9 @@ public class LoginWindow extends Application {
 
         //按钮面板
         GridPane gridBtn = new GridPane();
-        gridBtn.setPadding(new Insets(0,0,50,0));
+        gridBtn.setPadding(new Insets(0,0,40,0));
         gridBtn.setAlignment(Pos.CENTER);
-        gridBtn.setHgap(15);
+        gridBtn.setHgap(30);
         Button sbtn = new Button("登录");
         Button rbtn = new Button("重置");
         gridBtn.add(sbtn,0,0);
@@ -67,7 +70,7 @@ public class LoginWindow extends Application {
             alert.setHeaderText(null);
             int loginIndex = stuService.checkLogin(accountTextField.getText(),passTextField.getText());
             if (loginIndex==1) {
-                alert.setContentText("登陆成功！");
+                alert.setContentText("登录成功！");
                 alert.showAndWait();
                 //关闭当前界面.打开主页面
                 try {
@@ -81,7 +84,7 @@ public class LoginWindow extends Application {
                 alert.setContentText("账户被冻结！请联系管理员解除冻结！");
                 alert.showAndWait();
             } else {
-                alert.setTitle("登陆失败");
+                alert.setTitle("登录失败");
                 alert.setAlertType(Alert.AlertType.INFORMATION);
                 alert.setContentText("请检查您的账号和密码是否正确！");
                 alert.showAndWait();

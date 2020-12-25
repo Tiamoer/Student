@@ -1,7 +1,7 @@
 #LoginPane{
-    -fx-background-image: url("../img/login.jpg");
+    -fx-background-image: url("../img/login.png");
     -fx-background-repeat: stretch;
-    -fx-background-size: 500 375;
+    -fx-background-size: 500 300;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
@@ -10,10 +10,13 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bolder;
+    -fx-effect: null;
 }
 
 .button {
     -fx-background-color: darkturquoise;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
 }
 
 .button:hover {

@@ -19,54 +19,48 @@ public class AddStudent  {
 
     public void add() {
 
-        //主面板
+        //主面板 1200*800
         BorderPane addPane = new BorderPane();
         addPane.getStylesheets().addAll(this.getClass().getResource("../css/addPane.css").toExternalForm());
+        addPane.setId("addPane");
 
-        //标题面板
-        GridPane titlePane = new GridPane();
-        titlePane.setAlignment(Pos.CENTER);
-        titlePane.setId("gridPane");
         //底部按钮面板
         GridPane btnPane = new GridPane();
+        btnPane.getStylesheets().addAll(this.getClass().getResource("../css/addPane.css").toExternalForm());
         btnPane.setAlignment(Pos.CENTER);
         btnPane.setId("gridPane");
         btnPane.setHgap(20);
-        btnPane.setPadding(new Insets(10));
+        btnPane.setPadding(new Insets(0,0,60,0));
         //添加表单面板
         GridPane formPane = new GridPane();
         formPane.setAlignment(Pos.CENTER);
+        formPane.setPadding(new Insets(-50,0,0,0));
         formPane.setVgap(10);
         formPane.setHgap(5);
 
-        //titlePane组件
-        Label title = new Label("学生信息添加");
-        title.setId("title");
-        titlePane.add(title,0,0);
-
         //formPane组件
         Label nameLabel = new Label("姓名:");
-        formPane.add(nameLabel,0,2);
+        formPane.add(nameLabel,0,1);
         TextField nameTextField = new TextField();
-        formPane.add(nameTextField,1,2);
-        Label ageLabel = new Label("年龄");
-        formPane.add(ageLabel,0,3);
+        formPane.add(nameTextField,1,1);
+        Label ageLabel = new Label("年龄:");
+        formPane.add(ageLabel,0,2);
         TextField ageTextField = new TextField();
-        formPane.add(ageTextField,1,3);
-        Label accountLabel = new Label("账号");
-        formPane.add(accountLabel,0,4);
+        formPane.add(ageTextField,1,2);
+        Label accountLabel = new Label("账号:");
+        formPane.add(accountLabel,0,3);
         TextField accountTextField = new TextField();
-        formPane.add(accountTextField,1,4);
-        Label passwordLabel = new Label("密码");
-        formPane.add(passwordLabel,0,5);
+        formPane.add(accountTextField,1,3);
+        Label passwordLabel = new Label("密码:");
+        formPane.add(passwordLabel,0,4);
         TextField passwordTextField = new TextField();
-        formPane.add(passwordTextField,1,5);
-        Label statusLabel = new Label("状态码");
-        formPane.add(statusLabel,0,6);
+        formPane.add(passwordTextField,1,4);
+        Label statusLabel = new Label("状态码:");
+        formPane.add(statusLabel,0,5);
         TextField statusTextField = new TextField();
         statusTextField.setEditable(false);
         statusTextField.setText("0");
-        formPane.add(statusTextField,1,6);
+        formPane.add(statusTextField,1,5);
 
         //btnPane组件
         Button addBtn = new Button("添加");
@@ -111,7 +105,6 @@ public class AddStudent  {
         });
 
         addPane.setCenter(formPane);
-        addPane.setTop(titlePane);
 
         MainWindows.borderPane.setCenter(addPane);
         MainWindows.borderPane.setBottom(btnPane);

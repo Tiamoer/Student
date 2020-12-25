@@ -4,6 +4,7 @@ import com.stu.dao.StuDao;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -26,8 +27,6 @@ public class MainWindows extends Application {
         Menu stuManager4 = new Menu("待定菜单");
         MenuItem stuList = new MenuItem("学生列表");
         MenuItem stuAdd = new MenuItem("添加学生");
-//        MenuItem stuDelete = new MenuItem("删除学生");
-//        MenuItem stuUpdata = new MenuItem("修改信息");
         MenuItem exit = new MenuItem("退出系统");
         stuManager.getItems().addAll(stuList, stuAdd, new SeparatorMenuItem(), exit);
         //学生列表
@@ -68,6 +67,7 @@ public class MainWindows extends Application {
         borderPane.setTop(menuBar);
         //主窗口
         Scene scene = new Scene(borderPane, 300, 275);
+        stage.getIcons().add(new Image("com/stu/img/logo.png"));
         stage.setScene(scene);
         stage.show();
     }

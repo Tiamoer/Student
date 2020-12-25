@@ -12,3 +12,15 @@
 .table-view:row-selection .column-header-background .filler{
     visibility: false;
 }
+/*#deleteBtn {*/
+/*    -fx-background-image: url("../img/md-cancel.png");*/
+/*    -fx-background-repeat: stretch;*/
+/*    -fx-background-position: center center;*/
+/*}*/
+
+#title {
+    -fx-text-fill: #1692e3;
+    -fx-font-size: 20;
+    -fx-font-weight: bolder;
+    -fx-font-family: "Microsoft YaHei UI";
+}

@@ -8,8 +8,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 public class StuTable {
@@ -23,14 +28,14 @@ public class StuTable {
     protected void showStuList() {
         //定义整个面板
         BorderPane tablePane = new BorderPane();
-        tablePane.getStylesheets().add(getClass().getResource("../css/tablePane.css").toExternalForm());
-        tablePane.setId("tablePane");
+        tablePane.getStylesheets().add(getClass().getResource("../css/table.css").toExternalForm());
+//        tablePane.setId("tablePane");
         tablePane.setCenter(null);
 
         //定义表格
         TableView<StuModel> table = new TableView<>();
         ObservableList<StuModel> date = FXCollections.observableArrayList();
-        table.getStylesheets().add(getClass().getResource("../css/table.css").toExternalForm());
+//        table.getStylesheets().add(getClass().getResource("../css/table.css").toExternalForm());
 
         //定义底部按钮的面板
         GridPane gridPane = new GridPane();
@@ -46,7 +51,10 @@ public class StuTable {
         updatePane.setPrefSize(500,800);
 
         Label title = new Label("信息修改");
-        updatePane.add(title,0,0);
+        updatePane.add(title,1,0);
+        title.setId("title");
+        title.setPrefWidth(150);
+        title.setAlignment(Pos.CENTER);
         Label idLabel = new Label("ID:");
         updatePane.add(idLabel,0,1);
         TextField idTextField = new TextField();
@@ -155,7 +163,9 @@ public class StuTable {
 
                 if (!b) {
                     Button choseBtn = new Button("选择");
+                    choseBtn.setStyle("-fx-font: 12 黑体; -fx-base: #1692E3;");
                     Button deleteBtn = new Button("删除");
+                    deleteBtn.setStyle("-fx-font: 12 黑体; -fx-base: #ee2211;");
                     GridPane gridPane = new GridPane();
                     gridPane.setHgap(6);
                     gridPane.setAlignment(Pos.CENTER);

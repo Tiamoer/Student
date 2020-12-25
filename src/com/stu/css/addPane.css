@@ -1,6 +1,9 @@
-#title {
-    -fx-font-size: 30px;
+#addPane {
+    -fx-background-image: url("../img/add.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1200 800;
+    -fx-background-position: center center;
 }
+.button {
 
-#gridPane {
 }
