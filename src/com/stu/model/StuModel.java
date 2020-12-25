@@ -17,6 +17,14 @@ public class StuModel {
         this.stu_status = stu_status;
     }
 
+    public StuModel(String stu_name, int age, String stu_account, String stu_password, int stu_status) {
+        this.stu_name = stu_name;
+        this.age = age;
+        this.stu_account = stu_account;
+        this.stu_password = stu_password;
+        this.stu_status = stu_status;
+    }
+
     public int getNo() {
         return no;
     }

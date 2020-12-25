@@ -1,0 +1,28 @@
+#LoginPane{
+    -fx-background-image: url("../img/login.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 500 375;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bolder;
+}
+
+.button {
+    -fx-background-color: darkturquoise;
+}
+
+.button:hover {
+    -fx-background-color: lightskyblue;
+}
+
+#title {
+    -fx-font-family: "微软雅黑";
+    -fx-font-size: 30px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}

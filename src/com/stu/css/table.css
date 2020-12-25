@@ -1,0 +1,14 @@
+/* 表格边框颜色 */
+.table-view *.column-header-background {
+    -fx-background-insets: 0px, 0px;
+}
+.table-column {
+    -fx-alignment: center;
+}
+/*调节padding*/
+.table-column{
+    -fx-padding:1;
+}
+.table-view:row-selection .column-header-background .filler{
+    visibility: false;
+}

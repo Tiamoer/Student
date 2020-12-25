@@ -13,6 +13,7 @@ import java.util.ArrayList;
  *
  * 这是一个kc_t的测试
  */
+
 public class StuDao {
 
     Connection connection = ConMysql.getCon();
@@ -118,13 +119,11 @@ public class StuDao {
         return null;
     }
 
-    //测试
-
-    //根据账户名来删除学生
-    public boolean deleteStu(String account) {
+    //删除学生
+    public boolean deleteStu(StuModel stu) {
         try {
             preparedStatement = connection.prepareStatement("delete from stu where stu_account = ?");
-            preparedStatement.setString(1, account);
+            preparedStatement.setString(1, stu.getStu_account());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -141,17 +140,17 @@ public class StuDao {
     }
 
     //更新学生信息
-    public boolean updateStu(StuModel students) {
+    public boolean updateStu(StuModel student) {
         try {
             preparedStatement = connection.prepareStatement("update stu set no = ?,stu_name = ?,age = ?," +
                     "stu_account = ?,stu_password = ?,stu_status = ? where stu_account = ?");
-            preparedStatement.setInt(1, students.getNo());
-            preparedStatement.setString(2, students.getStu_name());
-            preparedStatement.setInt(3, students.getAge());
-            preparedStatement.setString(4, students.getStu_account());
-            preparedStatement.setString(5, students.getStu_password());
-            preparedStatement.setInt(6, students.getStu_status());
-            preparedStatement.setString(7, students.getStu_account());
+            preparedStatement.setInt(1, student.getNo());
+            preparedStatement.setString(2, student.getStu_name());
+            preparedStatement.setInt(3, student.getAge());
+            preparedStatement.setString(4, student.getStu_account());
+            preparedStatement.setString(5, student.getStu_password());
+            preparedStatement.setInt(6, student.getStu_status());
+            preparedStatement.setString(7, student.getStu_account());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -159,6 +158,32 @@ public class StuDao {
         } finally {
             try {
                 if (preparedStatement != null)
+                    preparedStatement.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    //添加学生
+    public boolean addStu(StuModel student) {
+        try {
+            preparedStatement = connection.prepareStatement("insert into stu" +
+                    " (stu_Name,age,stu_Account,stu_Password,stu_Status)" +
+                    " values (?,?,?,?,?)");
+            preparedStatement.setString(1,student.getStu_name());
+            preparedStatement.setInt(2,student.getAge());
+            preparedStatement.setString(3,student.getStu_account());
+            preparedStatement.setString(4,student.getStu_password());
+            preparedStatement.setInt(5,student.getStu_status());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement!=null)
                     preparedStatement.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

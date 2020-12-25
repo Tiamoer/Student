@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
@@ -12,27 +13,51 @@ import javafx.scene.control.*;
 public class LoginWindow extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("学生登陆");
+        stage.setTitle("学生信息管理系统");
         stage.setWidth(500);
         stage.setHeight(300);
+        stage.setResizable(false);
 
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25,25,25,25));
+        //窗口BorderPane布局
+        BorderPane borderPane = new BorderPane();
+
+        //标题栏布局
+        GridPane gridTitle = new GridPane();
+        gridTitle.setAlignment(Pos.CENTER);
+        gridTitle.setPadding(new Insets(35,0,0,0));
+        Label title = new Label("学生信息管理系统");
+        title.setId("title");
+        gridTitle.add(title,0,0);
+
+
+        //登陆表单网格布局
+        GridPane gridForm = new GridPane();
+        gridForm.setAlignment(Pos.CENTER);
+        gridForm.setHgap(10);
+        gridForm.setVgap(10);
+        gridForm.setPadding(new Insets(25,25,25,25));
 
         Label stuAccountText = new Label("账号：");
+        stuAccountText.setId("label");
         TextField accountTextField = new TextField();
         Label stuPassText = new Label("密码：");
-        TextField passTextField = new TextField();
-        Button sbtn = new Button("登录");
+        PasswordField passTextField = new PasswordField();
 
-        grid.add(stuAccountText,0,0);
-        grid.add(accountTextField,1,0);
-        grid.add(stuPassText,0,1);
-        grid.add(passTextField,1,1);
-        grid.add(sbtn,1,2);
+        gridForm.add(stuAccountText,0,0);
+        gridForm.add(accountTextField,1,0);
+        gridForm.add(stuPassText,0,1);
+        gridForm.add(passTextField,1,1);
+
+        //按钮面板
+        GridPane gridBtn = new GridPane();
+        gridBtn.setPadding(new Insets(0,0,50,0));
+        gridBtn.setAlignment(Pos.CENTER);
+        gridBtn.setHgap(15);
+        Button sbtn = new Button("登录");
+        Button rbtn = new Button("重置");
+        gridBtn.add(sbtn,0,0);
+        gridBtn.add(rbtn,1,0);
+
         //登录按钮点击事件
         sbtn.setOnAction(actionEvent -> {
             //登陆验证
@@ -56,13 +81,26 @@ public class LoginWindow extends Application {
                 alert.setContentText("账户被冻结！请联系管理员解除冻结！");
                 alert.showAndWait();
             } else {
+                alert.setTitle("登陆失败");
                 alert.setAlertType(Alert.AlertType.INFORMATION);
-                alert.setContentText("登陆失败！");
+                alert.setContentText("请检查您的账号和密码是否正确！");
                 alert.showAndWait();
             }
         });
+        //重置按钮点击事件
+        rbtn.setOnMouseClicked(actionEvent -> {
+            accountTextField.setText("");
+            passTextField.setText("");
+        });
 
-        Scene scene = new Scene(grid,300,275);
+        //布局嵌套
+        borderPane.setTop(gridTitle);
+        borderPane.setCenter(gridForm);
+        borderPane.setBottom(gridBtn);
+
+        Scene scene = new Scene(borderPane,300,275);
+        scene.getStylesheets().addAll(this.getClass().getResource("../css/login.css").toExternalForm());
+        borderPane.setId("LoginPane");
         stage.setScene(scene);
         stage.show();
     }

@@ -10,12 +10,12 @@ import com.stu.model.StuModel;
 public class StuService {
 
     StuDao stuDao = new StuDao();
-
     //判断是否登陆成功
     public int checkLogin(String account,String pass) {
         //调用dao层去查询数据库
         //返回0表示账户登陆失败,返回1表示登陆成功,返回2表示账户被冻结
         StuModel stu = stuDao.getStu(account);
+        if (stu==null) return 0;
         if (!stu.getStu_password().equals(pass)) {
             if (stu.getStu_status()<=3)
                 stu.setStu_status(stu.getStu_status()+1);
